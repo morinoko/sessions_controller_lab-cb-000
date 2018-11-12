@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
       session[:name] = params[:name]
       redirect_to root_path
     else
-      render :new, alert: "Please enter your name."
+      flash[:alert] = "Please enter your name."
+      render :new
     end
   end
 
