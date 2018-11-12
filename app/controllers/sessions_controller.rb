@@ -3,12 +3,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    if !params[:name].empty?
+    if params[:name].empty?
+      flash[:alert] = "Please enter your name."
+      redirect_to login_path
+    else
       session[:name] = params[:name]
       redirect_to root_path
-    else
-      flash[:alert] = "Please enter your name."
-      render :new
     end
   end
 
